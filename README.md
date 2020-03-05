@@ -1,2 +1,2 @@
 # MessageManage
- 推送系统
+- [MessageQueue Notebook]https://github.com/Cynaith/MQ
