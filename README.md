@@ -1,2 +1,2 @@
 # MessageManage
-- [MessageQueue Notebook]https://github.com/Cynaith/MQ
+- [MessageQueue Notebook](https://github.com/Cynaith/MQ)
