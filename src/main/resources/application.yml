@@ -1,0 +1,21 @@
+spring:
+  rabbitmq:
+    port: 5672
+    username: guest
+    password: guest
+    host: localhost
+    publisher-confirm-type: correlated #必须配置这个才会确认回调
+    publisher-returns: true #支持发布返回
+    listener:
+      direct:
+        acknowledge-mode: manual # none:不确认 auto自动确认 manual手动确认
+      simple:
+        acknowledge-mode: manual
+#定义交换机和队列
+messagemanage:
+  fanout:
+#    交换机
+    exchange: messagemanage.fanout
+#    mail队列
+    mail:
+      queue: messagemanage.fanout.mail.queue
