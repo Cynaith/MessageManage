@@ -5,6 +5,7 @@ import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.amqp.support.AmqpHeaders;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.stereotype.Component;
@@ -24,6 +25,9 @@ import java.util.Map;
         type = ExchangeTypes.FANOUT),
         key = ""))
 public class MailConsumer {
+
+    @Autowired
+    SendSimpleMail sendSimpleMail;
 
     /**
      *
@@ -52,6 +56,11 @@ public class MailConsumer {
         //  为了减少网络流量，手动确认可以被批处理，当该参数为 true 时，则可以一次性确认 delivery_tag 小于等于传入值的所有消息
         // 类似于Kafka中的offset
         channel.basicAck(tag,false);
+        sendSimpleMail.sendMail(mailInfo);
         System.out.println("MailConsumer:"+mailInfo.toString());
+        //channel.basicReject(deliveryTag:, false);
+        //deliveryTag:该消息的index
+        //requeue：被拒绝的是否重新入队列
     }
 }
+

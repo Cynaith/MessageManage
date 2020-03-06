@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Message Push Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script  src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: rgb(245,246,249);">
+    <div class="login">
+        <div class="login-logo">
+            <img class="logo" src="imgs/logo.png">
+        </div>
+        <div class="login-content">
+            <label for="username">&nbsp;账户名:</label>
+            <input id="username" type="text" class="form-control" id="username">
+            <br/>
+            <label for="password">&nbsp;账户密码:</label>
+            <input id="password" type="text" class="form-control" id="password">
+            <br/>
+            <br/>
+            <button type="button" class="btn btn-primary" style="width: 100%;height: 40px;" onclick="login()">登陆</button>
+        </div>
+    </div>
+</body>
+<script>
+    function login() {
+        var username = $("#username").val();
+        var password = $("password").val();
+        $.ajax(){
+
+        }
+    }
+</script>
+<style>
+    .mb24 {
+        margin-bottom: 1.5rem;
+    }
+    .body{
+        font-size: 0.8125rem;
+        font-family: SFS, Arial, sans-serif;
+        color: rgb(22, 50, 92);
+
+    }
+    .login{
+        padding-top: 100px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 380px;
+    }
+    .login-logo{
+        height: 113px;
+        width: 180px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        display: table;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    .login-content{
+        padding-top: 10px;
+        margin-bottom: 24px;
+        color: rgb(22, 50, 92);
+        margin: 0px auto;
+        padding: 1.25rem;
+        border-radius: 0.25rem;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(216, 221, 230);
+        border-image: initial;
+        background-color: #ffffff;
+    }
+    .logo{
+        margin-left: auto;
+        margin-right: auto;
+        vertical-align: middle;
+        max-width: 180px;
+        max-height: 113px;
+    }
+
+</style>
+</html>

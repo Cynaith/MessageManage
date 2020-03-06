@@ -20,6 +20,9 @@ public class MailInfo implements Serializable {
     //消费者邮箱
     String consumeMail;
 
+    //邮件主题
+    String mailSubject;
+
     //纯文本内容
-    String MailText;
+    String mailText;
 }

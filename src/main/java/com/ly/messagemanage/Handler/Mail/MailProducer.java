@@ -55,6 +55,8 @@ public class MailProducer implements RabbitTemplate.ConfirmCallback {
         rabbitTemplate.setReturnCallback(returnCallback);
         rabbitTemplate.setConfirmCallback(this);
         rabbitTemplate.convertAndSend(exchangeName, routeKey, mailInfo);
+        //等待confirm结束 返回confirm结果
+        //如不等待，会直接false返回
         while (!isConfirm) ;
         return isSend;
 
