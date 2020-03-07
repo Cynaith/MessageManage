@@ -9,7 +9,7 @@ public class User {
   private long id;
   private String name;
   private String password;
-  private String key;
+  private String clientkey;
   private long status;
 
 
@@ -40,12 +40,12 @@ public class User {
   }
 
 
-  public String getKey() {
-    return key;
+  public String getClientkey() {
+    return clientkey;
   }
 
-  public void setKey(String key) {
-    this.key = key;
+  public void setClientkey(String clientkey) {
+    this.clientkey = clientkey;
   }
 
 

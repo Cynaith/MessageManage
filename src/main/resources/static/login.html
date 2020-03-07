@@ -5,6 +5,7 @@
     <title>Message Push Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script  src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/js/jquerysession.js"></script>
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </head>
@@ -28,10 +29,25 @@
 <script>
     function login() {
         var username = $("#username").val();
-        var password = $("password").val();
-        $.ajax(){
+        var password = $("#password").val();
+        $.ajax({
+            url: "http://localhost:8080/user/login",
+            data:{
+                "name": username,
+                "password":password
+            },
+            success: function (data) {
+                if(data=="true"){
+                    $.session.set('name', username);
+                    alert("登陆成功");
+                    window.location.href = 'http://localhost:8080/admin.html';
+                }
+                else{
+                    alert("登陆失败");
+                }
+            }
 
-        }
+        })
     }
 </script>
 <style>

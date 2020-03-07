@@ -38,7 +38,8 @@ public class SendSimpleMail {
 
         mailSender.setHost("smtp.qq.com");
         mailSender.setUsername(mailInfo.getProduceMail());
-        mailSender.setPassword("bzbplhwrcippbbje");
+//        "bzbplhwrcippbbje"
+        mailSender.setPassword(mailInfo.getMailSmtp());
         mailSender.setJavaMailProperties(properties);
         mailSender.send(simpleMailMessage);
 

@@ -15,7 +15,7 @@ class MessagemanageApplicationTests {
     @Test
     void contextLoads() {
         for (int i = 0; i < 100; i++) {
-            MailInfo mailInfo = new MailInfo("mailId:" + i, "mailId:" + i, "mailId:" + i, "mailId:" + i);
+            MailInfo mailInfo = new MailInfo("mailId:" + i, "mailId:" + i, "mailId:" + i, "mailId:" + i, "mailId:" + i);
             sendMailService.pushQueue(mailInfo);
         }
 

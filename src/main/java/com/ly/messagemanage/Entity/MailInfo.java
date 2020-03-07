@@ -25,4 +25,7 @@ public class MailInfo implements Serializable {
 
     //纯文本内容
     String mailText;
+
+    //邮箱SMTP码
+    String mailSmtp;
 }
