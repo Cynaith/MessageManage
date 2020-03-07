@@ -26,7 +26,6 @@
         var email = $("#exampleInputEmail1").val();
         var smtp = $("#exampleInputPassword1").val();
         var name = $.session.get('name');
-        alert(email+smtp+name);
         $.ajax({
             url: "http://localhost:8080/user/checkmail",
             data:{
@@ -35,7 +34,7 @@
                 "name":name
             },
             success: function (data) {
-
+                alert("已发送验证邮件至"+email);
             }
         })
     }
