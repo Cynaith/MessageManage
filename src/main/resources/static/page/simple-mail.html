@@ -50,7 +50,7 @@
         var subject = $("#usr").val();
         var text = $("#comment").val();
         $.ajax({
-            url:"http://localhost:8081/mail/send",
+            url:"http://47.101.171.252:8081/mail/send",
             data:{
                 "produceMail":postmail,
                 "consumeMail":getmail,
@@ -68,7 +68,7 @@
     function getUsermail() {
         if (loadmail === true) return;
         $.ajax({
-            url:"http://localhost:8081/user/getUserMail",
+            url:"http://47.101.171.252:8081/user/getUserMail",
             data:{
                 "name" : $.session.get("name") //由登陆session获取
             },

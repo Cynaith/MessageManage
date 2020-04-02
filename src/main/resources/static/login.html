@@ -31,7 +31,7 @@
         var username = $("#username").val();
         var password = $("#password").val();
         $.ajax({
-            url: "http://localhost:8081/user/login",
+            url: "http://47.101.171.252:8081/user/login",
             data:{
                 "name": username,
                 "password":password
@@ -40,7 +40,7 @@
                 if(data=="true"){
                     $.session.set('name', username);
                     alert("登陆成功");
-                    window.location.href = 'http://localhost:8081/admin.html';
+                    window.location.href = 'http://47.101.171.252:8081/admin.html';
                 }
                 else{
                     alert("登陆失败");
