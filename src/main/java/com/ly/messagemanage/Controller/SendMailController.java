@@ -24,6 +24,7 @@ public class SendMailController {
     @RequestMapping("/send")
     public boolean sendMail(MailInfo mailInfo){
         sendMailService.pushQueue(mailInfo);
+        sendMailService.addMailRecord(mailInfo);
         return true;
     }
 

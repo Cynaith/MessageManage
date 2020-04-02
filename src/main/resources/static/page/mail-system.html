@@ -29,7 +29,7 @@
         var name = $.session.get('name');
 
         $.ajax({
-            url: "http://47.101.171.252:8081/user/checkmail",
+            url: "http://localhost:8081/user/checkmail",
             data:{
                 "mail": email,
                 "password":smtp,

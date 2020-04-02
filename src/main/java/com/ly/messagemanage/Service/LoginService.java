@@ -9,6 +9,7 @@ import com.ly.messagemanage.Domain.User;
  **/
 public interface LoginService {
     String login(User user);
+    void register(String name,String password);
     String checkmail(Mail mail,String name);
     String checkClient(User user,Mail mail);
     String initMail(Mail mail,String name);

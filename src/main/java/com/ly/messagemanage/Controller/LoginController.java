@@ -26,34 +26,38 @@ public class LoginController {
     LoginService loginService;
 
     @RequestMapping("/login")
-    public String Login(User user){
+    public String Login(User user) {
         return loginService.login(user);
     }
 
+    @RequestMapping("/register")
+    public void register(@RequestParam("name") String name, @RequestParam("password") String password) {
+        loginService.register(name, password);
+    }
 
     @RequestMapping("/checkmail")
-    public String CheckMail(@Param("mail") String mail,@Param("password") String password, @Param("name") String name){
+    public String CheckMail(@Param("mail") String mail, @Param("password") String password, @Param("name") String name) {
         Mail checkmail = new Mail();
         checkmail.setMail(mail);
         checkmail.setPassword(password);
-        loginService.checkmail(checkmail,name);
+        loginService.checkmail(checkmail, name);
         return "true";
     }
 
     @RequestMapping("/checkclient")
-    public String CheckClient(@Param("clientkey") String clientkey,@Param("name") String name,
-                              @Param("mail") String mail,@Param("password") String password){
+    public String CheckClient(@Param("clientkey") String clientkey, @Param("name") String name,
+                              @Param("mail") String mail, @Param("password") String password) {
         User user = new User();
         user.setClientkey(clientkey);
         user.setName(name);
         Mail mail1 = new Mail();
         mail1.setMail(mail);
         mail1.setPassword(password);
-        return loginService.checkClient(user,mail1)=="true"?"Verify success":"Verify false";
+        return loginService.checkClient(user, mail1) == "true" ? "Verify success" : "Verify false";
     }
 
     @RequestMapping("getUserMail")
-    public String getUserMail(@Param("name") String name){
+    public String getUserMail(@Param("name") String name) {
         return loginService.getUsermail(name);
     }
 }

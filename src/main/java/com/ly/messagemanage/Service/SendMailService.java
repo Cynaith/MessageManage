@@ -10,4 +10,5 @@ import com.ly.messagemanage.Entity.MailInfo;
 public interface SendMailService {
 
     void pushQueue(MailInfo mailInfo);
+    void addMailRecord(MailInfo mailInfo);
 }

@@ -16,8 +16,14 @@ import org.springframework.web.bind.annotation.Mapping;
 @Repository
 public interface UserMapping {
 
+    @Select("select userId from mail where mail = #{mail}")
+    public int getIdByMail(String mail);
+
     @Select("select count(id) from user where name = #{name} and password = #{password}")
     public int login(User user);
+
+    @Insert("insert into user(name,password) values(#{name},#{password})")
+    public void register(String name,String password);
 
     @Update("update user set clientkey = #{clientkey} where name = #{name}")
     public void setClientkey(User user);

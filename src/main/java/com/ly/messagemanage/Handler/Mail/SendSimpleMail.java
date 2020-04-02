@@ -35,6 +35,7 @@ public class SendSimpleMail {
         properties.setProperty("mail.smtp.auth","true");
         properties.setProperty("mail.smtp.starttls.enable","true");
         properties.setProperty("mail.smtp.starttls.required","true");
+        properties.setProperty("mail.smtp.port", "587");
 
         mailSender.setHost("smtp.qq.com");
         mailSender.setUsername(mailInfo.getProduceMail());

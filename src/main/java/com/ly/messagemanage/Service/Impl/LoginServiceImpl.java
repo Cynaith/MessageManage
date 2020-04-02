@@ -29,6 +29,12 @@ public class LoginServiceImpl implements LoginService {
         return userMapping.login(user) > 0 ? "true" : "false";
     }
 
+    @Override
+    public void register(String name, String password) {
+        userMapping.register(name, password);
+    }
+
+
     /**
      * @param mail 前端数据转发至mailProducer 设置key保存至user表用于验证邮箱
      * @param name
@@ -50,7 +56,7 @@ public class LoginServiceImpl implements LoginService {
         mailInfo.setConsumeMail(mail.getMail());
         mailInfo.setMailSmtp(mail.getPassword());
         mailInfo.setMailSubject("邮箱验证");
-        mailInfo.setMailText("点此验证邮箱--->http://47.101.171.252:8081/user/checkclient?name=" + name + "&clientkey=" +
+        mailInfo.setMailText("点此验证邮箱--->http://localhost:8081/user/checkclient?name=" + name + "&clientkey=" +
                 uuid+"&mail="+mail.getMail()+"&password="+mail.getPassword());
         //推送至生产者中
         boolean result = mailProducer.sendMessage(mailInfo);
