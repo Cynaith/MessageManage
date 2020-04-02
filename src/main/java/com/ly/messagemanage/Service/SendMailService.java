@@ -9,5 +9,5 @@ import com.ly.messagemanage.Entity.MailInfo;
 
 public interface SendMailService {
 
-    boolean pushQueue(MailInfo mailInfo);
+    void pushQueue(MailInfo mailInfo);
 }

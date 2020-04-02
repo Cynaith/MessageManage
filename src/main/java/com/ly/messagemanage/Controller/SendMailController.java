@@ -23,7 +23,8 @@ public class SendMailController {
     @ResponseBody
     @RequestMapping("/send")
     public boolean sendMail(MailInfo mailInfo){
-        return sendMailService.pushQueue(mailInfo);
+        sendMailService.pushQueue(mailInfo);
+        return true;
     }
 
     public boolean setMail(){

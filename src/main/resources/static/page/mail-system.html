@@ -9,6 +9,7 @@
     <script src="/js/jquerysession.js"></script>
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="../js/jquerysession.js"></script>
 
 </head>
 <body>
@@ -26,17 +27,20 @@
         var email = $("#exampleInputEmail1").val();
         var smtp = $("#exampleInputPassword1").val();
         var name = $.session.get('name');
+
         $.ajax({
-            url: "http://localhost:8080/user/checkmail",
+            url: "http://localhost:8081/user/checkmail",
             data:{
                 "mail": email,
                 "password":smtp,
                 "name":name
             },
             success: function (data) {
-                alert("已发送验证邮件至"+email);
+                alert("如IMAP/SMTP码正确，验证邮件将发送至至"+email);
             }
         })
+
+
     }
 </script>
 </html>

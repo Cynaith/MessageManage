@@ -9,9 +9,10 @@
     <script  src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="../js/jquerysession.js"></script>
 
 </head>
-<body>
+<body onload="load()">
 <div>
     <div class="header">
         <h1 class="header-title">简单邮件推送</h1>
@@ -19,15 +20,11 @@
     <div class="content">
         <div class="form-group">
             <label for="mail1">选择邮箱:</label>
-            <select class="form-control" id="mail1">
-                <option>894324762@qq.com</option>
+            <select class="form-control" id="mail1" onclick="getUsermail()">
             </select>
             <br/>
             <label for="mail2">发送至:</label>
-            <select class="form-control" id="mail2">
-                <option>894324762@qq.com</option>
-                <option>mawt0106@163.com</option>
-            </select>
+            <input type="text" class="form-control" id="mail2" placeholder="请输入邮箱">
             <br/>
             <label for="usr">邮件主题:</label>
             <input type="text" class="form-control" id="usr">
@@ -41,15 +38,19 @@
 
 </div>
 <script>
+    var loadmail = false;
+    function load() {
+        getUsermail();
+
+    }
     function sendmail() {
         var post=$("#mail1 option:selected");
-        var get=$("#mail2 option:selected");
         var postmail = post.text();
-        var getmail = get.text();
+        var getmail = $("#mail2").val()
         var subject = $("#usr").val();
         var text = $("#comment").val();
         $.ajax({
-            url:"http://localhost:8080/mail/send",
+            url:"http://localhost:8081/mail/send",
             data:{
                 "produceMail":postmail,
                 "consumeMail":getmail,
@@ -60,6 +61,22 @@
                 alert("提交成功")
             }
         })
+        $("#usr").val("");
+        $("#comment").val("");
+
+    }
+    function getUsermail() {
+        if (loadmail === true) return;
+        $.ajax({
+            url:"http://localhost:8081/user/getUserMail",
+            data:{
+                "name" : $.session.get("name") //由登陆session获取
+            },
+            success: function (data) {
+                $("#mail1").prepend("<option value='mail'>"+data+"</option>");
+            }
+        })
+        loadmail = true;
     }
 </script>
 </body>

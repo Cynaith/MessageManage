@@ -12,4 +12,5 @@ public interface LoginService {
     String checkmail(Mail mail,String name);
     String checkClient(User user,Mail mail);
     String initMail(Mail mail,String name);
+    String getUsermail(String name);
 }

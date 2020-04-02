@@ -9,6 +9,7 @@ public class MailLog {
   private String mailTo;
   private String mailSubject;
   private String mailText;
+  private String mailTime;
 
 
   public long getId() {
@@ -62,6 +63,15 @@ public class MailLog {
 
   public void setMailText(String mailText) {
     this.mailText = mailText;
+  }
+
+
+  public String getMailTime() {
+    return mailTime;
+  }
+
+  public void setMailTime(String mailTime) {
+    this.mailTime = mailTime;
   }
 
 }

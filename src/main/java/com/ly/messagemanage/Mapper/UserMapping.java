@@ -32,4 +32,8 @@ public interface UserMapping {
             " where not exists(select mail from mail where userId = (select id from user where name = #{name}))" +
             "limit 0,1 ")
     public int initMail(@Param("mail") String mail,@Param("password") String password, @Param("name") String name);
+
+
+    @Select("select mail.mail from mail left join user on (user.id = mail.userId) where user.name = #{name}")
+    public String getUsermail(@Param("name") String name);
 }

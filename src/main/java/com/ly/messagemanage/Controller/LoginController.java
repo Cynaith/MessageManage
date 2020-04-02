@@ -18,21 +18,19 @@ import org.springframework.web.bind.annotation.RestController;
  * @DATE: 2020/3/7
  **/
 
-@Controller
+@RestController
 @RequestMapping("user")
 public class LoginController {
 
     @Autowired
     LoginService loginService;
 
-    @ResponseBody
     @RequestMapping("/login")
     public String Login(User user){
         return loginService.login(user);
     }
 
 
-    @ResponseBody
     @RequestMapping("/checkmail")
     public String CheckMail(@Param("mail") String mail,@Param("password") String password, @Param("name") String name){
         Mail checkmail = new Mail();
@@ -42,7 +40,6 @@ public class LoginController {
         return "true";
     }
 
-    @ResponseBody
     @RequestMapping("/checkclient")
     public String CheckClient(@Param("clientkey") String clientkey,@Param("name") String name,
                               @Param("mail") String mail,@Param("password") String password){
@@ -53,5 +50,10 @@ public class LoginController {
         mail1.setMail(mail);
         mail1.setPassword(password);
         return loginService.checkClient(user,mail1)=="true"?"Verify success":"Verify false";
+    }
+
+    @RequestMapping("getUserMail")
+    public String getUserMail(@Param("name") String name){
+        return loginService.getUsermail(name);
     }
 }

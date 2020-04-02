@@ -7,6 +7,7 @@ import com.ly.messagemanage.Handler.Mail.MailProducer;
 import com.ly.messagemanage.Mapper.UserMapping;
 import com.ly.messagemanage.Service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -34,6 +35,7 @@ public class LoginServiceImpl implements LoginService {
      * @return
      */
     @Override
+    @Async
     public String checkmail(Mail mail, String name) {
         String uuid = UUID.randomUUID().toString();
         User user = new User();
@@ -48,7 +50,7 @@ public class LoginServiceImpl implements LoginService {
         mailInfo.setConsumeMail(mail.getMail());
         mailInfo.setMailSmtp(mail.getPassword());
         mailInfo.setMailSubject("邮箱验证");
-        mailInfo.setMailText("点此验证邮箱--->http://localhost:8080/user/checkclient?name=" + name + "&clientkey=" +
+        mailInfo.setMailText("点此验证邮箱--->http://localhost:8081/user/checkclient?name=" + name + "&clientkey=" +
                 uuid+"&mail="+mail.getMail()+"&password="+mail.getPassword());
         //推送至生产者中
         boolean result = mailProducer.sendMessage(mailInfo);
@@ -69,4 +71,15 @@ public class LoginServiceImpl implements LoginService {
         return "true";
     }
 
+
+    @Override
+    public String getUsermail(String name) {
+        String mail;
+        try{
+             mail = userMapping.getUsermail(name);
+        }catch (Exception e){
+            return "请先验证邮箱";
+        }
+        return mail;
+    }
 }
